@@ -27,13 +27,14 @@ elif [ -f .env ]; then
 fi
 
 
-# .env 파일 확인
-echo "Checking .env file..."
+# .env 파일 확인 및 처리
 if [ -f .env ]; then
     echo ".env file exists"
-    ls -la .env
+    sudo chown ubuntu:ubuntu .env
+    ls -la .env  # 파일 권한 확인
 else
-    echo "Warning: .env file not found"
+    echo "Error: .env file not found"
+    exit 1  # .env 파일이 없으면 배포 중단
 fi
 
 

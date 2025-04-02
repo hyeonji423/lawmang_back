@@ -38,15 +38,24 @@ jobs:
           EC2_USERNAME: ${{ secrets.EC2_USERNAME }}
           EC2_ENVS: ${{ secrets.ENVS }}
         run: |
+          # 먼저 로컬에서 .env 파일 생성
+          echo "$EC2_ENVS" > .env
+          cat .env  # 파일이 제대로 생성되었는지 확인 (민감한 정보는 로그에서 마스킹됨)
+          
+          # EC2에 배포
           ssh -i ~/.ssh/id_rsa -o ConnectTimeout=10 ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} '
             rm -rf ~/app_deploy &&
             mkdir -p ~/app_deploy
           '
+          
+          # 모든 파일을 EC2로 전송
           scp -i ~/.ssh/id_rsa -o ConnectTimeout=10 -r ./* ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:~/app_deploy/
-          echo "${{ secrets.ENVS }}" > .env
           scp -i ~/.ssh/id_rsa -o ConnectTimeout=10 .env ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:~/app_deploy/
+          
+          # 배포 스크립트 실행
           ssh -i ~/.ssh/id_rsa -o ConnectTimeout=10 ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} '
             cd ~/app_deploy &&
+            ls -la .env &&  # .env 파일이 존재하는지 확인
             chmod +x deploy.sh &&
             sudo chown ubuntu:ubuntu .env &&
             sudo -E bash deploy.sh
