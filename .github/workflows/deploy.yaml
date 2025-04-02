@@ -43,10 +43,11 @@ jobs:
             mkdir -p ~/app_deploy
           '
           scp -i ~/.ssh/id_rsa -o ConnectTimeout=10 -r ./* ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:~/app_deploy/
+          echo "${{ secrets.ENVS }}" > .env
+          scp -i ~/.ssh/id_rsa -o ConnectTimeout=10 .env ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:~/app_deploy/
           ssh -i ~/.ssh/id_rsa -o ConnectTimeout=10 ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} '
             cd ~/app_deploy &&
             chmod +x deploy.sh &&
-            echo "$EC2_ENVS" | sudo tee .env > /dev/null &&
             sudo chown ubuntu:ubuntu .env &&
             sudo -E bash deploy.sh
           '

@@ -14,6 +14,10 @@ import os
 import signal
 import sys
 import asyncio
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 # ✅ FastAPI 애플리케이션 생성 (기본 응답을 ORJSONResponse로 설정)
 app = FastAPI(default_response_class=ORJSONResponse)
