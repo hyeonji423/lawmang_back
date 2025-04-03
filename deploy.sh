@@ -79,14 +79,14 @@ server {
         proxy_cache_bypass \$http_upgrade;
 
         # CORS 설정 추가
-        add_header Access-Control-Allow-Origin "https://lawmang-front.cercel.app" always;
+        add_header Access-Control-Allow-Origin "https://lawmang-front.vercel.app" always;
         add_header Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS" always;
         add_header Access-Control-Allow-Headers "Authorization, Content-Type, Accept, Origin, User-Agent" always;
         add_header Access-Control-Allow-Credentials "true" always;
 
         # OPTIONS 요청 처리
         if (\$request_method = "OPTIONS") {
-            add_header Access-Control-Allow-Origin "https://lawmang-front.cercel.app" always;
+            add_header Access-Control-Allow-Origin "https://lawmang-front.vercel.app" always;
             add_header Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS" always;
             add_header Access-Control-Allow-Headers "Authorization, Content-Type, Accept, Origin, User-Agent" always;
             add_header Access-Control-Allow-Credentials "true" always;
