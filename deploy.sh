@@ -78,9 +78,8 @@ server {
         proxy_set_header Host \$host;
         proxy_cache_bypass \$http_upgrade;
 
-
         # ✅ OPTIONS 요청에만 CORS 헤더 적용
-        if ($request_method = "OPTIONS") {
+        if (\$request_method = "OPTIONS") {
             add_header "Access-Control-Allow-Origin" "https://lawmang-front.vercel.app" always;
             add_header "Access-Control-Allow-Methods" "GET, POST, PUT, DELETE, OPTIONS" always;
             add_header "Access-Control-Allow-Headers" "Authorization, Content-Type, Accept, Origin, User-Agent" always;
