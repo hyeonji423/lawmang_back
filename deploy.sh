@@ -59,6 +59,10 @@ if ! command -v nginx > /dev/null; then
     sudo apt-get install -y nginx
 fi
 
+# Nginx-extras 설치 (CORS 헤더 관리를 위한 모듈 포함)
+echo "Installing Nginx-extras..."
+sudo apt-get install -y nginx-extras
+
 # Nginx 설정
 echo "Configuring Nginx..."
 if [ ! -d "/etc/nginx/sites-available" ]; then
@@ -77,25 +81,6 @@ server {
     }
 
     location / {
-        # CORS 헤더 설정
-        if (\$cors = "true") {
-            add_header "Access-Control-Allow-Origin" \$http_origin always;
-            add_header "Access-Control-Allow-Methods" "GET, POST, PUT, DELETE, OPTIONS" always;
-            add_header "Access-Control-Allow-Headers" "Authorization, Content-Type, Accept, Origin, User-Agent" always;
-            add_header "Access-Control-Allow-Credentials" "true" always;
-        }
-
-        # OPTIONS 요청 처리
-        if (\$request_method = "OPTIONS") {
-            add_header "Access-Control-Allow-Origin" \$http_origin always;
-            add_header "Access-Control-Allow-Methods" "GET, POST, PUT, DELETE, OPTIONS" always;
-            add_header "Access-Control-Allow-Headers" "Authorization, Content-Type, Accept, Origin, User-Agent" always;
-            add_header "Access-Control-Allow-Credentials" "true" always;
-            add_header "Content-Length" 0;
-            add_header "Content-Type" "text/plain charset=UTF-8";
-            return 204;
-        }
-
         # 프록시 설정
         proxy_pass http://127.0.0.1:8000;
         proxy_http_version 1.1;
@@ -103,6 +88,25 @@ server {
         proxy_set_header Connection "upgrade";
         proxy_set_header Host \$host;
         proxy_cache_bypass \$http_upgrade;
+
+        # CORS 헤더 설정 (한 번만)
+        if (\$cors = "true") {
+            more_set_headers "Access-Control-Allow-Origin: \$http_origin";
+            more_set_headers "Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS";
+            more_set_headers "Access-Control-Allow-Headers: Authorization, Content-Type, Accept, Origin, User-Agent";
+            more_set_headers "Access-Control-Allow-Credentials: true";
+        }
+
+        # OPTIONS 요청 처리
+        if (\$request_method = "OPTIONS") {
+            more_set_headers "Access-Control-Allow-Origin: \$http_origin";
+            more_set_headers "Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS";
+            more_set_headers "Access-Control-Allow-Headers: Authorization, Content-Type, Accept, Origin, User-Agent";
+            more_set_headers "Access-Control-Allow-Credentials: true";
+            more_set_headers "Content-Length: 0";
+            more_set_headers "Content-Type: text/plain charset=UTF-8";
+            return 204;
+        }
     }
 }
 EOF'
