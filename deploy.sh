@@ -77,6 +77,17 @@ server {
         proxy_set_header Connection "upgrade";
         proxy_set_header Host \$host;
         proxy_cache_bypass \$http_upgrade;
+
+        add_header "Access-Control-Allow-Origin" "https://lawmang-front.vercel.app" always;
+        add_header "Access-Control-Allow-Methods" "GET, POST, PUT, DELETE, OPTIONS" always;
+        add_header "Access-Control-Allow-Headers" "Authorization, Content-Type, Accept, Origin, User-Agent" always;
+        add_header "Access-Control-Allow-Credentials" "true" always;
+
+        if (\$request_method = "OPTIONS") {
+            add_header "Content-Length" 0;
+            add_header "Content-Type" "text/plain charset=UTF-8";
+            return 204;
+        }
     }
 }
 EOF'
