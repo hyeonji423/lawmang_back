@@ -73,19 +73,19 @@ server {
     location / {
         proxy_pass http://127.0.0.1:8000;
         proxy_http_version 1.1;
-        proxy_set_header Upgrade \$http_upgrade;
+        proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "upgrade";
-        proxy_set_header Host \$host;
-        proxy_cache_bypass \$http_upgrade;
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
 
-        # ✅ OPTIONS 요청에만 CORS 헤더 적용
-        if (\$request_method = "OPTIONS") {
-            add_header "Access-Control-Allow-Origin" "https://lawmang-front.vercel.app" always;
-            add_header "Access-Control-Allow-Methods" "GET, POST, PUT, DELETE, OPTIONS" always;
-            add_header "Access-Control-Allow-Headers" "Authorization, Content-Type, Accept, Origin, User-Agent" always;
-            add_header "Access-Control-Allow-Credentials" "true" always;
-            add_header "Content-Length" 0;
-            add_header "Content-Type" "text/plain charset=UTF-8";
+        add_header "Access-Control-Allow-Origin" "https://lawmang-front.vercel.app" always;
+        add_header "Access-Control-Allow-Methods" "GET, POST, PUT, DELETE, OPTIONS" always;
+        add_header "Access-Control-Allow-Headers" "Authorization, Content-Type, Accept, Origin, User-Agent" always;
+        add_header "Access-Control-Allow-Credentials" "true" always;
+
+        if ($request_method = "OPTIONS") {
+            add_header "Content-Length" 0 always;
+            add_header "Content-Type" "text/plain charset=UTF-8" always;
             return 204;
         }
     }
