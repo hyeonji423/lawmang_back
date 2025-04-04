@@ -57,14 +57,15 @@ def on_startup():
 # ✅ 공통 예외 처리 (404 & 500 에러 핸들러)
 @app.exception_handler(404)
 async def not_found_handler(request: Request, exc: HTTPException):
-    return ORJSONResponse(status_code=404, content={"error": "해당 경로를 찾을 수 없습니다."})
+    return {"error": "해당 경로를 찾을 수 없습니다."}  # ✅ CORSMiddleware가 헤더 붙여줌
 
 @app.exception_handler(500)
 async def internal_server_error_handler(request: Request, exc: HTTPException):
-    return ORJSONResponse(
-        status_code=500, 
-        content={"error": "서버 내부 오류가 발생했습니다.", "detail": str(exc.detail) if hasattr(exc, "detail") else "알 수 없는 오류"}
-    )
+    return {
+        "error": "서버 내부 오류가 발생했습니다.",
+        "detail": str(exc.detail) if hasattr(exc, "detail") else "알 수 없는 오류"
+    }
+
 
 # ✅ 종료 시그널 핸들러 (FastAPI 종료 시 오류 방지)
 def signal_handler(sig, frame):
@@ -76,3 +77,4 @@ def signal_handler(sig, frame):
     except RuntimeError:
         pass
     sys.exit(0)
+
