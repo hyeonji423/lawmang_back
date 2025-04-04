@@ -18,8 +18,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# test code
-
 
 # ✅ FastAPI 애플리케이션 생성 (기본 응답을 ORJSONResponse로 설정)
 app = FastAPI(default_response_class=ORJSONResponse)
