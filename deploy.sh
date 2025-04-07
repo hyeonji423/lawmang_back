@@ -78,10 +78,7 @@ server {
     set \$cors "";
     if (\$http_origin ~* "^https://lawmang-front\.vercel\.app$") {
         set \$cors "true";
-    }
-    else if ($http_origin ~* "^https://frontnuxtvsnext\.vercel\.app$") {
-    set $cors "true";
-    }
+    }    
 
     location / {
         # 프록시 설정
