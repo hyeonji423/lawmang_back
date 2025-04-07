@@ -79,10 +79,7 @@ server {
     if (\$http_origin ~* "^https://lawmang-front\.vercel\.app$") {
         set \$cors "true";
     }    
-    if (\$http_origin ~* "^https://frontnuxtvsnext\.vercel\.app$") {
-        set \$cors "true";
-    }
-
+    
     location / {
         # 프록시 설정
         proxy_pass http://127.0.0.1:8000;
