@@ -219,17 +219,24 @@ def update_user(
 
 # ✅ 닉네임 중복 확인 API 추가
 @router.get("/check-nickname")
-def check_nickname(nickname: str, db: Session = Depends(get_db)):
-    """탈퇴한 계정을 제외하고 닉네임 중복 검사"""
+async def check_nickname(nickname: str = None, db: Session = Depends(get_db)):
+    """닉네임 중복 검사"""
+    if not nickname:
+        raise HTTPException(status_code=400, detail="닉네임이 필요합니다.")
+
+    # 닉네임 유효성 검사
+    if len(nickname) < 2 or len(nickname) > 10:
+        raise HTTPException(status_code=400, detail="닉네임은 2자 이상 10자 이하여야 합니다.")
+
     existing_user = db.query(User).filter(
         User.nickname == nickname, 
-        User.is_active == True  # ✅ 활성화된 계정만 검색
+        User.is_active == True
     ).first()
 
     if existing_user:
         raise HTTPException(status_code=400, detail="이미 사용 중인 닉네임입니다.")
 
-    return {"message": "사용 가능한 닉네임입니다."}
+    return {"message": "사용 가능한 닉네임입니다.", "available": True}
 
 
 @router.post("/verify-password")
