@@ -218,7 +218,7 @@ def update_user(
 
 
 # ✅ 닉네임 중복 확인 API 추가
-@router.get("/auth/check-nickname")
+@router.get("/check-nickname")
 def check_nickname(nickname: str, db: Session = Depends(get_db)):
     """탈퇴한 계정을 제외하고 닉네임 중복 검사"""
     existing_user = db.query(User).filter(
@@ -251,7 +251,7 @@ async def verify_current_password(
 
 
 # ✅ 회원탈퇴 API
-@router.delete("/auth/withdraw", status_code=status.HTTP_200_OK)
+@router.delete("/withdraw", status_code=status.HTTP_200_OK)
 async def withdraw_user(
     current_user: dict = Depends(get_current_user),
     db: Session = Depends(get_db)
