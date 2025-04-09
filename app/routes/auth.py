@@ -217,7 +217,7 @@ def update_user(
     return {"message": "회원정보가 성공적으로 수정되었습니다."}
 
 
-# ✅ 닉네임 중복 확인 API 추가
+# ✅ 닉네임 중복 확인 API
 @router.get("/check-nickname")
 async def check_nickname(nickname: str = None, db: Session = Depends(get_db)):
     """닉네임 중복 검사"""
@@ -229,7 +229,7 @@ async def check_nickname(nickname: str = None, db: Session = Depends(get_db)):
         raise HTTPException(status_code=400, detail="닉네임은 2자 이상 10자 이하여야 합니다.")
 
     existing_user = db.query(User).filter(
-        User.nickname == nickname, 
+        User.nickname == nickname
     ).first()
 
     if existing_user:
