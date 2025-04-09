@@ -230,7 +230,6 @@ async def check_nickname(nickname: str = None, db: Session = Depends(get_db)):
 
     existing_user = db.query(User).filter(
         User.nickname == nickname, 
-        User.is_active == True
     ).first()
 
     if existing_user:
