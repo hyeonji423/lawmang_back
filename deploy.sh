@@ -69,37 +69,33 @@ if [ ! -d "/etc/nginx/sites-available" ]; then
     sudo mkdir -p /etc/nginx/sites-available
 fi
 
-sudo bash -c 'cat > /etc/nginx/sites-available/myapp <<EOF
+sudo bash -c 'cat > /etc/nginx/sites-available/myapp <<'"'"'EOF'"'"'
 server {
     listen 80;
     server_name _;
 
-    # CORS 설정을 위한 변수 정의
-    set \$cors "";
-    if (\$http_origin ~* "^https://lawmang-front\.vercel\.app$") {
-        set \$cors "true";
-    }    
-    
+    set $cors "";
+    if ($http_origin ~* "^https://lawmang-front\.vercel\.app$") {
+        set $cors "true";
+    }
+
     location / {
-        # 프록시 설정
         proxy_pass http://127.0.0.1:8000;
         proxy_http_version 1.1;
-        proxy_set_header Upgrade \$http_upgrade;
+        proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "upgrade";
-        proxy_set_header Host \$host;
-        proxy_cache_bypass \$http_upgrade;
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
 
-        # CORS 헤더 설정 (한 번만)
-        if (\$cors = "true") {
-            more_set_headers "Access-Control-Allow-Origin: \$http_origin";
+        if ($cors = "true") {
+            more_set_headers "Access-Control-Allow-Origin: $http_origin";
             more_set_headers "Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS";
             more_set_headers "Access-Control-Allow-Headers: Authorization, Content-Type, Accept, Origin, User-Agent";
             more_set_headers "Access-Control-Allow-Credentials: true";
         }
 
-        # OPTIONS 요청 처리
-        if (\$request_method = "OPTIONS") {
-            more_set_headers "Access-Control-Allow-Origin: \$http_origin";
+        if ($request_method = "OPTIONS") {
+            more_set_headers "Access-Control-Allow-Origin: $http_origin";
             more_set_headers "Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS";
             more_set_headers "Access-Control-Allow-Headers: Authorization, Content-Type, Accept, Origin, User-Agent";
             more_set_headers "Access-Control-Allow-Credentials: true";
@@ -107,6 +103,18 @@ server {
             more_set_headers "Content-Type: text/plain charset=UTF-8";
             return 204;
         }
+    }
+
+    location /docs {
+        proxy_pass http://127.0.0.1:8000/docs;
+    }
+
+    location /openapi.json {
+        proxy_pass http://127.0.0.1:8000/openapi.json;
+    }
+
+    location /redoc {
+        proxy_pass http://127.0.0.1:8000/redoc;
     }
 }
 EOF'
