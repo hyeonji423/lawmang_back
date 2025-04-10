@@ -76,3 +76,9 @@ def signal_handler(sig, frame):
         pass
     sys.exit(0)
 
+# ✅ 서버 시작 시 라우터 경로 로깅
+@app.on_event("startup")
+def log_routes_on_startup():
+    print("\n📌 [FastAPI 등록된 라우터 경로]")
+    for route in app.routes:
+        print(route.path)
