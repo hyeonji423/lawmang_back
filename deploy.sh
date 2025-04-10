@@ -128,6 +128,8 @@ sudo chown -R ubuntu:ubuntu /var/log/lawmang_backend
 
 echo "Cleaning up existing processes..."
 echo "Stopping existing uvicorn processes..."
+
+sudo pkill -u root -f uvicorn || true
 sudo pkill -f uvicorn || true
 sudo systemctl stop nginx || true
 
