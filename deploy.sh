@@ -75,31 +75,37 @@ server {
     server_name _;
 
     # CORS 설정을 위한 변수 정의
-    set \$cors "";
-    if (\$http_origin ~* "^https://lawmang-front\.vercel\.app$") {
-        set \$cors "true";
-    }    
-    
-    location / {
-        # 프록시 설정
+    set $cors "";
+    if ($http_origin ~* "^https://lawmang-front\.vercel\.app$") {
+        set $cors "true";
+    }
+
+    # API 요청을 위한 별도 location 블록
+    location /api/ {
+        # URL 중복 방지를 위한 rewrite 규칙
+        rewrite ^/api/auth/auth/(.*) /api/auth/$1 break;
+        
         proxy_pass http://127.0.0.1:8000;
         proxy_http_version 1.1;
-        proxy_set_header Upgrade \$http_upgrade;
+        proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "upgrade";
-        proxy_set_header Host \$host;
-        proxy_cache_bypass \$http_upgrade;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
 
-        # CORS 헤더 설정 (한 번만)
-        if (\$cors = "true") {
-            more_set_headers "Access-Control-Allow-Origin: \$http_origin";
+        # CORS 헤더 설정
+        if ($cors = "true") {
+            more_set_headers "Access-Control-Allow-Origin: $http_origin";
             more_set_headers "Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS";
             more_set_headers "Access-Control-Allow-Headers: Authorization, Content-Type, Accept, Origin, User-Agent";
             more_set_headers "Access-Control-Allow-Credentials: true";
         }
 
         # OPTIONS 요청 처리
-        if (\$request_method = "OPTIONS") {
-            more_set_headers "Access-Control-Allow-Origin: \$http_origin";
+        if ($request_method = "OPTIONS") {
+            more_set_headers "Access-Control-Allow-Origin: $http_origin";
             more_set_headers "Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS";
             more_set_headers "Access-Control-Allow-Headers: Authorization, Content-Type, Accept, Origin, User-Agent";
             more_set_headers "Access-Control-Allow-Credentials: true";
@@ -107,6 +113,16 @@ server {
             more_set_headers "Content-Type: text/plain charset=UTF-8";
             return 204;
         }
+    }
+
+    # 기본 location 블록
+    location / {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
     }
 }
 EOF'
