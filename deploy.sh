@@ -75,14 +75,13 @@ server {
     server_name _;
 
     # CORS 설정을 위한 변수 정의
-    set $cors "";
+    set $cors '';
     if ($http_origin ~* "^https://lawmang-front\.vercel\.app$") {
-        set $cors "true";
+        set $cors 'true';
     }
 
     # API 요청을 위한 별도 location 블록
     location /api/ {
-        # URL 중복 방지를 위한 rewrite 규칙
         rewrite ^/api/auth/auth/(.*) /api/auth/$1 break;
         
         proxy_pass http://127.0.0.1:8000;
@@ -95,16 +94,14 @@ server {
         proxy_set_header X-Forwarded-Proto $scheme;
         proxy_cache_bypass $http_upgrade;
 
-        # CORS 헤더 설정
-        if ($cors = "true") {
+        if ($cors = 'true') {
             more_set_headers "Access-Control-Allow-Origin: $http_origin";
             more_set_headers "Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS";
             more_set_headers "Access-Control-Allow-Headers: Authorization, Content-Type, Accept, Origin, User-Agent";
             more_set_headers "Access-Control-Allow-Credentials: true";
         }
 
-        # OPTIONS 요청 처리
-        if ($request_method = "OPTIONS") {
+        if ($request_method = 'OPTIONS') {
             more_set_headers "Access-Control-Allow-Origin: $http_origin";
             more_set_headers "Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS";
             more_set_headers "Access-Control-Allow-Headers: Authorization, Content-Type, Accept, Origin, User-Agent";
@@ -115,7 +112,6 @@ server {
         }
     }
 
-    # 기본 location 블록
     location / {
         proxy_pass http://127.0.0.1:8000;
         proxy_http_version 1.1;
