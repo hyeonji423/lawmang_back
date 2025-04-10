@@ -80,5 +80,10 @@ def signal_handler(sig, frame):
 @app.on_event("startup")
 def log_routes_on_startup():
     print("\n📌 [FastAPI 등록된 라우터 경로]")
+    print("=" * 50)
     for route in app.routes:
-        print(route.path)
+        if route.path.startswith("/api/auth/auth"):
+            print(f"❌ 중복된 경로: {route.path}")
+        else:
+            print(f"✅ 정상 경로: {route.path}")
+    print("=" * 50)
