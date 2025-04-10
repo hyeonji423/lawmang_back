@@ -97,7 +97,7 @@ server {
             add_header 'Access-Control-Allow-Headers' 'Authorization, Content-Type, Accept, Origin, User-Agent' always;
             add_header 'Access-Control-Allow-Credentials' 'true' always;
             add_header 'Content-Type' 'text/plain charset=UTF-8';
-            add_header 'Content-Length' 0;
+            add_header 'Content-Length' '0';
             return 204;
         }
     }
