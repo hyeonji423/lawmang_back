@@ -74,13 +74,6 @@ server {
     listen 80;
     server_name _;
 
-    # CORS 설정을 위한 변수 정의
-    set $cors '';
-    if ($http_origin ~* "^https://lawmang-front\.vercel\.app$") {
-        set $cors 'true';
-    }
-
-    # API 요청을 위한 별도 location 블록
     location /api/ {
         rewrite ^/api/auth/auth/(.*) /api/auth/$1 break;
         
@@ -92,22 +85,20 @@ server {
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_cache_bypass $http_upgrade;
-
-        if ($cors = 'true') {
-            more_set_headers "Access-Control-Allow-Origin: $http_origin";
-            more_set_headers "Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS";
-            more_set_headers "Access-Control-Allow-Headers: Authorization, Content-Type, Accept, Origin, User-Agent";
-            more_set_headers "Access-Control-Allow-Credentials: true";
-        }
+        
+        # CORS 헤더 직접 설정
+        add_header 'Access-Control-Allow-Origin' 'https://lawmang-front.vercel.app' always;
+        add_header 'Access-Control-Allow-Methods' 'GET, POST, PUT, DELETE, OPTIONS' always;
+        add_header 'Access-Control-Allow-Headers' 'Authorization, Content-Type, Accept, Origin, User-Agent' always;
+        add_header 'Access-Control-Allow-Credentials' 'true' always;
 
         if ($request_method = 'OPTIONS') {
-            more_set_headers "Access-Control-Allow-Origin: $http_origin";
-            more_set_headers "Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS";
-            more_set_headers "Access-Control-Allow-Headers: Authorization, Content-Type, Accept, Origin, User-Agent";
-            more_set_headers "Access-Control-Allow-Credentials: true";
-            more_set_headers "Content-Length: 0";
-            more_set_headers "Content-Type: text/plain charset=UTF-8";
+            add_header 'Access-Control-Allow-Origin' 'https://lawmang-front.vercel.app' always;
+            add_header 'Access-Control-Allow-Methods' 'GET, POST, PUT, DELETE, OPTIONS' always;
+            add_header 'Access-Control-Allow-Headers' 'Authorization, Content-Type, Accept, Origin, User-Agent' always;
+            add_header 'Access-Control-Allow-Credentials' 'true' always;
+            add_header 'Content-Type' 'text/plain charset=UTF-8';
+            add_header 'Content-Length' 0;
             return 204;
         }
     }
