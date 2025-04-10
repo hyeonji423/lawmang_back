@@ -81,13 +81,20 @@ server {
     }    
     
     location / {
-        # 프록시 설정
+        # URL 정규화 설정 추가
         proxy_pass http://127.0.0.1:8000;
         proxy_http_version 1.1;
-        proxy_set_header Upgrade \$http_upgrade;
+        proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "upgrade";
-        proxy_set_header Host \$host;
-        proxy_cache_bypass \$http_upgrade;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+        
+        # URL 중복 방지를 위한 설정
+        proxy_redirect off;
+        rewrite ^/api/auth/auth/(.*) /api/auth/$1 break;
 
         # CORS 헤더 설정 (한 번만)
         if (\$cors = "true") {
