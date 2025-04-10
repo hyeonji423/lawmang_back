@@ -219,7 +219,7 @@ def update_user(
 
 # ✅ 닉네임 중복 확인 API
 @router.get("/check-nickname")
-async def check_nickname(nickname: str = None, db: Session = Depends(get_db)):
+def check_nickname(nickname: str = None, db: Session = Depends(get_db)):
     """닉네임 중복 검사"""
     if not nickname:
         raise HTTPException(status_code=400, detail="닉네임이 필요합니다.")
@@ -258,7 +258,7 @@ async def verify_current_password(
 
 # ✅ 회원탈퇴 API
 @router.delete("/withdraw", status_code=status.HTTP_200_OK)
-async def withdraw_user(
+def withdraw_user(
     current_user: dict = Depends(get_current_user),
     db: Session = Depends(get_db)
 ):
