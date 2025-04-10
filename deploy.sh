@@ -127,8 +127,12 @@ sudo touch /var/log/lawmang_backend/uvicorn.log
 sudo chown -R ubuntu:ubuntu /var/log/lawmang_backend
 
 echo "Cleaning up existing processes..."
-sudo pkill uvicorn || true
+echo "Stopping existing uvicorn processes..."
+sudo pkill -f uvicorn || true
 sudo systemctl stop nginx || true
+
+echo "Cleaning up .pyc files..."
+find . -name "*.pyc" -delete
 
 sudo chown -R ubuntu:ubuntu /var/www/lawmang_backend
 
