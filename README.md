@@ -1,22 +1,9 @@
-<a name="top"></a>
-![lawmang](https://github.com/user-attachments/assets/bf5ca45e-9eb9-4aef-9109-fc353d6f5808)
+# Lawmang Project
 
-![Python Badge](https://img.shields.io/badge/Python-3.9+-blue?logo=python&logoColor=white&style=flat)
-![OS](https://img.shields.io/badge/OS-ubuntu%2C%20windows-0078D4)
-![Deployment](https://img.shields.io/badge/Deployment-AWS%20%2B%20Vercel-orange?logo=amazonaws&logoColor=white&style=flat)
-![Uvicorn](https://img.shields.io/badge/Server-uvicorn-%2337c2b1?logo=fastapi&logoColor=white&style=flat)
-![LangChain](https://img.shields.io/badge/Framework-LangChain-%231a73e8?logo=langchain&logoColor=white&style=flat)
-![Database](https://img.shields.io/badge/Database-PostgreSQL%20%7C%20Elasticsearch-blue?logo=postgresql&logoColor=white&style=flat)
-![API](https://img.shields.io/badge/API-Tavily%20%26%20Firecrawl-orange?logo=api&logoColor=white&style=flat)
-![Environment](https://img.shields.io/badge/Environment-Anaconda-yellowgreen?logo=anaconda&logoColor=white&style=flat)
-![IDE](https://img.shields.io/badge/IDE-VS%20Code%20%2B%20Cursor.ai-blue?logo=visualstudiocode&logoColor=white&style=flat)
-![GitHub](https://img.shields.io/badge/Version%20Control-GitHub-black?logo=github&logoColor=white&style=flat)
-![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-blue?logo=githubactions&logoColor=white&style=flat)
-[![OpenAI API](https://img.shields.io/badge/OpenAI%20API-GPT--3.5turbo-brightgreen.svg?logo=OpenAI&logoColor=white)](https://openai.com/)
-
-
-
-# Lawmang 프로젝트
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Seoyoung-Cheon/Lawmang/refs/heads/main/frontend/src/assets/favicon.ico" alt="Lawmang Logo1" width="100" height="100" />
+  <img src="https://raw.githubusercontent.com/ChloeLee01/lawmang_front/main/src/assets/Logo1.PNG" alt="로고" width="250" />
+</p>
 
 ## 목차
 
@@ -32,6 +19,8 @@
 사람들은 법률이 더 쉽고, 투명하며, 가까운 방식으로 다가오길 기대하고 있습니다.
 
 저희는 누구나 사건을 정리하고 핵심 쟁점을 파악할 수 있도록 설계하고, 기술적 신기함보다 실제 ‘이해’를 도와주는 방향으로 'Lawmang' 을 개발하였습니다.
+
+
 
 주요 목표:
 
