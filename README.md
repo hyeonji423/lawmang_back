@@ -1,8 +1,8 @@
 # Lawmang Project
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Seoyoung-Cheon/Lawmang/refs/heads/main/frontend/src/assets/favicon.ico" alt="Lawmang Logo1" width="100" height="100" />
-  <img src="https://raw.githubusercontent.com/ChloeLee01/lawmang_front/main/src/assets/Logo1.PNG" alt="로고" width="250" />
+  <img src="https://github.com/ChloeLee01/lawmang_front/blob/main/src/assets/Logo3.png" alt="Lawmang Logo1" width="500" height="200" />
+  
 </p>
 
 ## 목차
