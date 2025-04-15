@@ -11,8 +11,6 @@
 - [주요 서비스](#-주요-서비스)
 - [시스템 구조](#-시스템-구조)
 - [개발환경 설정](#-개발환경-설정)
-- [구성 파일](#-구성-파일)
-- [연락처](#-연락처)
 
 ## 🏛️ 프로젝트 소개
 
@@ -152,28 +150,17 @@ localhost:8000
 ```
 
 ## 📚 개발 플로우 
+<img src="https://github.com/rommaniitedomum/lawmang_backend/blob/main/image-4.png" alt="Lawmang Logo1" width="700" height="400" /> 
 
-# 이따가 추가 
+## 📚 히스토리
+<img src="https://github.com/rommaniitedomum/lawmang_backend/blob/main/image-2.png" alt="Lawmang Logo1" width="700" height="400" /> 
 
+## 📚 플로우 차트 히스토리
+<img src="https://github.com/rommaniitedomum/lawmang_backend/blob/main/image-3.png" alt="Lawmang Logo1" width="700" height="400" /> 
 
-## 🦜 랭체인
+## 📚 플로우 차트 히스토리
+<img src="https://github.com/rommaniitedomum/lawmang_backend/blob/main/image-5.png" alt="Lawmang Logo1" width="700" height="400" /> 
 
-## RAG 체인 구현
-
-## 📃 자료
-
-- [PPT자료]()
-- [erd클라우드]()
-- [(개인 보고서)시스템 목적 및 기술적 구현.docx]()
-
-
-## 📞 연락처
-
-프로젝트와 관련된 문의사항이나 협업 요청은 아래 연락처로 연락 부탁드립니다.
-
-- **이메일**: [support@lawmang.com](mailto:support@lawmang.com)
-- **웹사이트**: [https://lawmang.com](https://lawmang.com)
-- **카카오톡**: Lawmang 카카오톡 플러스친구 (준비중)
 
 
 [Back to top](#top)
