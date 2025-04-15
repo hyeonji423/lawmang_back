@@ -150,19 +150,3 @@ uvicorn app.main:app --reload
 # 기본 api 확인
 localhost:8000
 ```
-
-## 📚 개발 플로우 
-<img src="https://github.com/rommaniitedomum/lawmang_backend/blob/main/image-4.png" alt="Lawmang Logo1" width="700" height="400" /> 
-
-## 📚 히스토리
-<img src="https://github.com/rommaniitedomum/lawmang_backend/blob/main/image-2.png" alt="Lawmang Logo1" width="700" height="400" /> 
-
-## 📚 플로우 차트 히스토리
-<img src="https://github.com/rommaniitedomum/lawmang_backend/blob/main/image-3.png" alt="Lawmang Logo1" width="700" height="400" /> 
-
-## 📚 플로우 차트 히스토리
-<img src="https://github.com/rommaniitedomum/lawmang_backend/blob/main/image-5.png" alt="Lawmang Logo1" width="700" height="400" /> 
-
-
-
-[Back to top](#top)
