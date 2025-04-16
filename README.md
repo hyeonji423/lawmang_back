@@ -1,18 +1,18 @@
 # 💼 Lawmang Backend API v1.0
 
 > **코드랩 아카데미 AICC 4기 2팀**  
-> **개발기간: 2025. 01. 21 ~ 2025. 04. 15**
-
+> **개발기간: 2025. 01. 21 ~ 2025. 04. 15** <br>
+<br>
 
 ## 👩‍👩‍👧‍👦 웹개발팀 소개
 > **이영선**, **황현지**, **천서영**, **박준호**, **김용주**
-
+<br>
 
 ## 배포 주소
 > **프론트 서버** : https://lawmang-front.vercel.app<br>
 > **프론트 깃허브 주소** : https://github.com/ChloeLee01/lawmang_front
 > **API 문서 URL** : https://lawmangback.aicc4hyeonji.site/docs
-
+<br>
 
 ## 📚 목차
 
@@ -23,6 +23,7 @@
 - [📄 구성 파일](#-구성-파일)
 - [🗂️ 아키텍쳐](#아키텍쳐)
 
+<br>
 
 ---
 ## 🏛️ 프로젝트 소개
@@ -32,7 +33,7 @@ Lawmang은 사용자가 자신의 사건을 정리하고, 쟁점을 이해하며
 
 GPT, LangChain, 벡터 검색을 활용해 기술의 복잡함은 감추고, ‘이해 중심’의 경험을 제공합니다.”
 
-
+<br>
 ---
 ## 🧪 개발 환경 세팅
 
@@ -55,7 +56,7 @@ pip install -r requirements.txt
 ```bash
 uvicorn app.main:app --reload
 ```
-
+<br>
 
 ---
 ## 🧱 기술 스택
@@ -69,7 +70,7 @@ uvicorn app.main:app --reload
 ![LangChain](https://img.shields.io/badge/LangChain-000000?style=for-the-badge)
 ![FAISS](https://img.shields.io/badge/FAISS-003366?style=for-the-badge)
 ![Firecrawl](https://img.shields.io/badge/Firecrawl-FF6F00?style=for-the-badge)
-
+<br>
 
 ---
 ## ✨ 주요 기능
@@ -102,7 +103,7 @@ uvicorn app.main:app --reload
 - 마이페이지 내 메모 저장 및 열람 기록 관리 기능 제공  
 - 리포트 생성 및 상담 완료 시 이메일 알림 자동 발송  
 - 상담·판례 열람 이력 기반 사용자 히스토리 추적 가능
-
+<br>
 
 ---
 ## 📄 구성 파일
@@ -117,6 +118,8 @@ uvicorn app.main:app --reload
 | 법률 상담 챗봇        | LLM 기반 상담 기능 구현                     | `chatbot/*.py`, `chatbot/tool_agents/*`  |
 | 법률 용어 검색        | 벡터 검색 기반 법률 용어 검색 기능           | `chatbot_term/*.py`                      |
 | 심층 웹 리서치        | GPT 기반 외부 자료 수집 및 요약 보고서 생성  | `deepresearch/*.py`                      |
+
+<br>
 
 ---
 ## 🗂️ 아키텍쳐
