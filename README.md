@@ -60,6 +60,7 @@ uvicorn app.main:app --reload
 ## 🧱 기술 스택
 
 ### Backend
+
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white)
 ![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-CA5047?style=for-the-badge)
@@ -68,6 +69,7 @@ uvicorn app.main:app --reload
 ![LangChain](https://img.shields.io/badge/LangChain-000000?style=for-the-badge)
 ![FAISS](https://img.shields.io/badge/FAISS-003366?style=for-the-badge)
 ![Firecrawl](https://img.shields.io/badge/Firecrawl-FF6F00?style=for-the-badge)
+![OpenAI API](https://img.shields.io/badge/OpenAI%20API-412991?style=for-the-badge&logo=openai&logoColor=white)
 
 <br>
 
@@ -123,7 +125,7 @@ uvicorn app.main:app --reload
 ### 디렉토리 구조
 
 ```
-project-root/
+backend/
 │
 ├── app/                      # 백엔드 전체 애플리케이션 루트
 │   ├── __init__.py
