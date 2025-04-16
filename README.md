@@ -10,7 +10,7 @@
 
 ## 배포 주소
 > **프론트 서버** : https://lawmang-front.vercel.app<br>
-> **프론트 깃허브 주소** : https://github.com/ChloeLee01/lawmang_front
+> **프론트 깃허브 주소** : https://github.com/ChloeLee01/lawmang_front<br>
 > **API 문서 URL** : https://lawmangback.aicc4hyeonji.site/docs
 <br>
 
