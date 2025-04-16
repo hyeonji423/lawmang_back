@@ -30,7 +30,9 @@
 Lawmang은 사용자가 자신의 사건을 정리하고, 쟁점을 이해하며, 스스로 판단할 수 있도록 돕는 AI 기반 법률지원 서비스입니다. 
 
 GPT, LangChain, 벡터 검색을 활용해 기술의 복잡함은 감추고, ‘이해 중심’의 경험을 제공합니다.”
+
 <br>
+
 
 ## 🧪 개발 환경 세팅
 
@@ -66,6 +68,7 @@ uvicorn app.main:app --reload
 ![LangChain](https://img.shields.io/badge/LangChain-000000?style=for-the-badge)
 ![FAISS](https://img.shields.io/badge/FAISS-003366?style=for-the-badge)
 ![Firecrawl](https://img.shields.io/badge/Firecrawl-FF6F00?style=for-the-badge)
+
 <br>
 
 ## ✨ 주요 기능
