@@ -75,7 +75,7 @@ uvicorn app.main:app --reload
 ## ✨ 주요 기능
 
 ### 1️⃣ 법률 상담 챗봇 (Legal Chatbot)
-- LangGraph 기반 싱글 에이전트를 통해 문맥을 유지하며 실시간 법률 상담 제공  
+- LangGraph 기반 싱글 에이전트를 통해 문맥을 유지한 실시간 법률 상담 제공  
 - 상담 흐름에 따라 관련 상담 사례 및 판례 정보 자동 연계  
 - Elasticsearch, PostgreSQL, FAISS 기반 검색 엔진으로 높은 정밀도 보장
 
@@ -95,8 +95,7 @@ uvicorn app.main:app --reload
 ### 4️⃣ AI 리포트 생성 (AI Report)
 - 사용자 입력폼을 기반으로 GPT가 핵심 키워드 도출  
 - 후속 키워드 자동 생성 → Firecrawl로 외부 자료 수집  
-- 멀티 에이전트가 수집된 정보를 통합 분석해 자동 리포트 생성  
-- 쟁점 + 판례 포함된 문서 형태 보고서 제공
+- 멀티 에이전트가 수집된 정보를 통합 분석하여 쟁점 및 판례가 포함된 보고서를 자동 생성
 
 
 ### 5️⃣ 사용자 개인화 서비스 (Personalization)
