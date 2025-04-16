@@ -74,8 +74,6 @@ uvicorn app.main:app --reload
 ---
 ## ✨ 주요 기능
 
-## ✨ 주요 기능
-
 ### 1️⃣ 법률 상담 챗봇 (Legal Chatbot)
 - LangGraph 기반 싱글 에이전트를 통해 문맥을 유지하며 실시간 법률 상담 제공  
 - 상담 흐름에 따라 관련 상담 사례 및 판례 정보 자동 연계  
@@ -122,7 +120,7 @@ uvicorn app.main:app --reload
 | 심층 웹 리서치        | GPT 기반 외부 자료 수집 및 요약 보고서 생성  | `deepresearch/*.py`                      |
 
 ---
-## 🗂️ 아키텍쳐 
+## 🗂️ 아키텍쳐
 ### 시스템 구조
 
 ```
