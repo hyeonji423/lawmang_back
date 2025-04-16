@@ -1,17 +1,20 @@
 # 💼 Lawmang Backend API v1.0
 
 > **코드랩 아카데미 AICC 4기 2팀**  
-> **개발기간: 2025. 01. 21 ~ 2025. 04. 15** <br>
+> **개발기간: 2025. 01. 21 ~ 2025. 04. 15**
+
 <br>
 
 ## 👩‍👩‍👧‍👦 웹개발팀 소개
 > **이영선**, **황현지**, **천서영**, **박준호**, **김용주**
+
 <br>
 
 ## 배포 주소
 > **프론트 서버** : https://lawmang-front.vercel.app<br>
 > **프론트 깃허브 주소** : https://github.com/ChloeLee01/lawmang_front<br>
 > **API 문서 URL** : https://lawmangback.aicc4hyeonji.site/docs
+
 <br>
 
 ## 📚 목차
@@ -22,6 +25,7 @@
 - [✨ 주요 기능](#-주요-기능)
 - [📄 구성 파일](#-구성-파일)
 - [🗂️ 시스템 구성](#-시스템-구성)
+  
 <br>
 
 ## 🏛️ 프로젝트 소개
