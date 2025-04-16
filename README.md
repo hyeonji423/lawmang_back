@@ -36,25 +36,26 @@ GPT, LangChain, 벡터 검색을 활용해 기술의 복잡함은 감추고, ‘
 ---
 ## 🧪 개발 환경 세팅
 
-### 1. 가상환경 생성
+### ① 가상환경 생성
 ```bash
 conda create --prefix C:/conda_envs/lawmang_env python=3.11
 ```
 
-### 2. 가상환경 활성화
+### ② 가상환경 활성화
 ```bash
 conda activate C:/conda_envs/lawmang_env
 ```
 
-### 3. 패키지 설치
+### ③ 패키지 설치
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. 서버 실행
+### ④ 서버 실행
 ```bash
 uvicorn app.main:app --reload
 ```
+
 
 ---
 ## 🧱 기술 스택
@@ -73,26 +74,38 @@ uvicorn app.main:app --reload
 ---
 ## ✨ 주요 기능
 
-### 1️ 법률 상담 챗봇 (Legal Chatbot)
-- 사용자의 질문을 분석하여 즉각적이고 정확한 법률 상담 제공  
-- 상담 사례 및 판례 검색을 통한 상세한 법률 정보 제공  
-- Elasticsearch, PostgreSQL, FAISS 기반 검색 엔진 활용으로 높은 정확도 보장
+## ✨ 주요 기능
 
-### 2️⃣ 법률 용어 검색 서비스 (Legal Terms Search)
-- 사용자가 궁금한 법률 전문 용어에 대해 정의와 설명을 빠르게 제공
-- 벡터 기반의 고속 검색을 통해 관련된 법률 용어를 쉽고 정확하게 검색 가능
-- RAG(Retrieve-Augmented Generation) 방식을 활용하여, 외부 지식(DB, 문서 등)을 검색(Retrieve)한 뒤, LLM이 그 내용을 바탕으로 응답을 생성(Generate)함으로써
-보다 정확하고 맥락 있는 정보를 제공
+### 1️⃣ 법률 상담 챗봇 (Legal Chatbot)
+- LangGraph 기반 싱글 에이전트를 통해 문맥을 유지하며 실시간 법률 상담 제공  
+- 상담 흐름에 따라 관련 상담 사례 및 판례 정보 자동 연계  
+- Elasticsearch, PostgreSQL, FAISS 기반 검색 엔진으로 높은 정밀도 보장
 
-### 3️⃣ 딥 리서치 서비스 (Deep Research)
-- 특정 법률 이슈에 대해 웹 기반의 심층 리서치 수행
-- Firecrawl, GPT 를 활용한 최신 법률 정보 및 자료 수집
-- 수집된 자료를 바탕으로 요약 보고서 및 세부 리포트 생성
 
-### 4️⃣ 사용자 개인화 서비스 (Personalization)
-- 상담 기록 및 법률 상담 이력 관리
-- 메모 작성 및 개인 기록 관리 기능 제공
-- 사용자 맞춤형 콘텐츠 제공 (최근 조회한 상담, 개인 히스토리 등)
+### 2️⃣ 법률 용어 검색 (Legal Terms Search)
+- 사용자의 질문을 FAISS 기반 벡터 검색으로 분석해 유사 법률용어 정의 제공  
+- 사전 정의 존재 시 그대로 제공, 미존재 시 GPT가 설명 생성  
+- RAG(Retrieve-Augmented Generation) 방식으로 정의 + 조문 맥락까지 안내
+
+
+### 3️⃣ 판례 요약 기능 (Case Summary)
+- 키워드 기반 판례 검색 → API 호출로 판례 원문 확보  
+- GPT가 사건개요, 판시사항, 판결요지를 요약  
+- 기존 원문 중심 정보에서 벗어나, 사용자 중심 판례 이해 지원
+
+
+### 4️⃣ AI 리포트 생성 (AI Report)
+- 사용자 입력폼을 기반으로 GPT가 핵심 키워드 도출  
+- 후속 키워드 자동 생성 → Firecrawl로 외부 자료 수집  
+- 멀티 에이전트가 수집된 정보를 통합 분석해 자동 리포트 생성  
+- 쟁점 + 판례 포함된 문서 형태 보고서 제공
+
+
+### 5️⃣ 사용자 개인화 서비스 (Personalization)
+- 마이페이지 내 메모 저장 및 열람 기록 관리 기능 제공  
+- 리포트 생성 및 상담 완료 시 이메일 알림 자동 발송  
+- 상담·판례 열람 이력 기반 사용자 히스토리 추적 가능
+
 
 ---
 ## 📄 구성 파일
