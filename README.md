@@ -59,15 +59,21 @@ uvicorn app.main:app --reload
 
 ## 🧱 기술 스택
 
-### Backend
+### Framework & Core
 
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white)
-![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-CA5047?style=for-the-badge)
 ![Uvicorn](https://img.shields.io/badge/Uvicorn-000000?style=for-the-badge&logo=uvicorn&logoColor=white)
 ![Pydantic](https://img.shields.io/badge/Pydantic-0099cc?style=for-the-badge)
-![LangChain](https://img.shields.io/badge/LangChain-000000?style=for-the-badge)
+
+### Data & Search
+
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white)
+![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-CA5047?style=for-the-badge)
 ![FAISS](https://img.shields.io/badge/FAISS-003366?style=for-the-badge)
+
+### AI & Agent
+
+![LangChain](https://img.shields.io/badge/LangChain-000000?style=for-the-badge)
 ![Firecrawl](https://img.shields.io/badge/Firecrawl-FF6F00?style=for-the-badge)
 ![OpenAI API](https://img.shields.io/badge/OpenAI%20API-412991?style=for-the-badge&logo=openai&logoColor=white)
 
